@@ -2,23 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
 use App\Models\Ct_Usuario;
-
 class UsuarioController extends Controller
 {
-    //funciones que vamos a utilizar
-
-    public function index() 
-    {
-        //devuelve controller
-        //return('hola desde usuario controller');
-
-        //devuelve vista
-        //return view('vista');
-       //array tipo mapa pasar a la vista
-       $usuarios = Ct_Usuario::all();
-       return view("vista" , ['data' => $usuarios] );
+    public function index (){
+    
+        $lista = Ct_Usuario::all();        
+        return view("personalista", ["data"=> $lista]);
+    }
+    public function eliminar(Request $request){
+        $idpers= $request->input("usu_id");        
+        $persona= Ct_Usuario::where('usu_id', $idpers);
+        $persona->delete();        
+        echo "Se eliminó registro";
+        exit();
     }
 }
