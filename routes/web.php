@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\api\ProductoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,6 @@ Route::get('/', function () {
 
 Route::get('/listapersona', [UsuarioController::class, 'index']);
 Route::get("/autentica/elimina", [UsuarioController::class, 'eliminar']);
+
+
+Route::get('/listaproducto', [ProductoController::class, 'index']);
